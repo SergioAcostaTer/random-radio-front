@@ -6,7 +6,8 @@ function RoomInfo({ room, audio }) {
     const [data, setData] = useState(null);
     const navigate = useNavigate();
 
-    const socket = io("http://192.168.1.133:4000/" + room); // Replace with your room name
+    // const socket = io("http://192.168.1.133:4000/" + room); // Replace with your room name
+    const socket = io("https://random-radio-back.onrender.com/" + room); // Replace with your room name
 
 
     useEffect(() => {
