@@ -24,24 +24,34 @@ function Room() {
         // const socket = io("http://192.168.0.30:4000/" + room); // Replace with your room name
         setSocket(socket);
 
-        const handleSongDetails = (data) => {
+        const handleSongDetails = async (data) => {
             console.log(data);
             setData(data);
-
+        
             try {
+                // Make a fetch request to the URL to check its status
+                const response = await fetch(data.url);
+        
+                // Check if the status code is 403 Forbidden
+                if (response.status === 403) {
+                    console.log("URL returned a 403 status code. Skipping song...");
+                    socket.emit("skipSong", data);
+                    return;
+                }
+        
                 // Create an audio element and set its source to the provided URL
                 const audio = new Audio(data.url);
                 setAudioElement(audio);
-
+        
                 // Set the current time of the audio and play it
                 audio.currentTime = data.currentTime;
                 audio.play();
-            }
-            catch (err) {
+            } catch (err) {
                 console.log(err);
                 socket.emit("skipSong", data);
             }
         };
+        
 
         socket.emit("joinRoom")
 
