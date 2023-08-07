@@ -34,6 +34,8 @@ function Room() {
             audio.play();
         };
 
+        
+
 
         socket.on("songDetails", (song) => handleSongDetails(song));
 

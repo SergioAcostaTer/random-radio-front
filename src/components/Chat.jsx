@@ -31,6 +31,8 @@ const Chat = ({ socket }) => {
   const sendMessage = (e) => {
     e.preventDefault();
 
+    console.log(message);
+
     socket.emit("newMessage", {
       message: message,
       id: socket.id,
