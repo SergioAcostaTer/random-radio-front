@@ -9,6 +9,7 @@ function Room() {
 
     // const socket = io("http://192.168.1.133:4000/" + room); // Replace with your room name
     const socket = io("https://random-radio-back.onrender.com/" + room); // Replace with your room name
+    // const socket = io("http://192.168.0.30:4000/" + room); // Replace with your room name
 
     // State to store users, chat messages, and current song details
     const [data, setData] = useState(null);
@@ -50,11 +51,18 @@ function Room() {
 
     return (
         <>
-            <RoomsInfo audio={audioElement}/>
-            <div>
-                <h1>Now Playing: {data?.name} - {data?.artists[0]}</h1>
-                <Chat socket={socket} />
+            <div className="flex h-full">
+                <div>
+                    <RoomsInfo audio={audioElement} />
+                </div>
+                <div>
+                    <h1>Now Playing: {data?.name} - {data?.artists[0]}</h1>
+                </div>
+                <div>
+                    <Chat socket={socket} />
+                </div>
             </div>
+
         </>
     );
 }

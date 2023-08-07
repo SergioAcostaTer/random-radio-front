@@ -1,22 +1,18 @@
-//RoomInfo component
+import RoomInfo from "./RoomInfo";
 
-import RoomInfo from "./RoomInfo"
+// RoomsInfo.js
+const roomNames = ["room1", "room2", "room3", "room4", "room5", "room6"];
+
 
 
 const RoomsInfo = ({ audio }) => {
-  return (
-    <>
+    return (
+        <>
+            {roomNames.map(roomName => (
+                <RoomInfo key={roomName} audio={audio} room={roomName} />
+            ))}
+        </>
+    );
+};
 
-      <RoomInfo audio={audio} room={"room1"} />
-      <RoomInfo audio={audio} room={"room2"} />
-      <RoomInfo audio={audio} room={"room3"} />
-      <RoomInfo audio={audio} room={"room4"} />
-      <RoomInfo audio={audio} room={"room5"} />
-      <RoomInfo audio={audio} room={"room6"} />
-
-
-    </>
-  )
-}
-
-export default RoomsInfo
+export default RoomsInfo;
