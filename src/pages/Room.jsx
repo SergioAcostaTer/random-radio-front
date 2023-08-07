@@ -35,6 +35,8 @@ function Room() {
                     method: "GET",
                     mode: "no-cors",
                 });
+
+                console.log(response);
         
                 // Check if the status code is 403 Forbidden
                 if (response.status === 403) {
