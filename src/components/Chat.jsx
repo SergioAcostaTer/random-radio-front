@@ -19,7 +19,7 @@ const Chat = ({ socket }) => {
     return () => {
       socket.off("newMessage");
     };
-  }, []);
+  }, [socket]);
 
   useEffect(() => {
     console.log(messages);
