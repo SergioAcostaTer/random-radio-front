@@ -8,40 +8,40 @@ function Room() {
     const { room } = useParams();
     const [sockett, setSocket] = useState(null);
     const [users, setUsers] = useState([]);
-    
+
     // State to store users, chat messages, and current song details
     const [data, setData] = useState(null);
     const [audioElement, setAudioElement] = useState(null);
-    
+
     useEffect(() => {
         const socket = io("https://random-radio-back.onrender.com/" + room); // Replace with your room name
         setSocket(socket);
-        
+
         const handleSongDetails = (data) => {
             console.log(data);
             setData(data);
-            
+
+            const audio = new Audio(); // Create an empty audio element
+            audio.src = data.url; // Set the source URL
+            setAudioElement(audio);
+
+            audio.currentTime = data.currentTime;
             try {
-                const audio = new Audio(); // Create an empty audio element
-                audio.src = data.url; // Set the source URL
-                setAudioElement(audio);
-                
-                audio.currentTime = data.currentTime;
                 audio.play();
             } catch (err) {
-                console.log(err);
+                console.log(err, "Error playing audio", 403);
                 socket.emit("skipSong", data);
             }
         };
-        
+
         socket.emit("joinRoom");
-        
+
         socket.on("userCount", (users) => {
             setUsers(users);
         });
-        
+
         socket.on("songDetails", (song) => handleSongDetails(song));
-        
+
         return () => {
             socket.emit("leaveRoom");
             socket.off("songDetails", handleSongDetails);
@@ -52,7 +52,7 @@ function Room() {
             socket.disconnect();
         };
     }, [room]);
-    
+
     return (
         <>
             <div className="h-full w-full relative">
@@ -63,7 +63,7 @@ function Room() {
                     <h1>Now Playing: {data?.name} - {data?.artists[0]}</h1>
                     <h2>Users in room: {users}</h2>
                 </div>
-                
+
                 {sockett ? <Chat socket={sockett} /> : null}
             </div>
         </>
