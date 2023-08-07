@@ -11,17 +11,18 @@ function RoomInfo({ room, audio }) {
 
     useEffect(() => {
         // const socket = io("http://192.168.1.133:4000/" + room); // Replace with your room name
-        const socket = io("https://random-radio-back.onrender.com/" + room); // Replace with your room name
-        // const socket = io("http://192.168.0.30:4000/" + room); // Replace with your room name
+        // const socket = io("https://random-radio-back.onrender.com/" + room); // Replace with your room name
+        const socket = io("http://localhost:3000/" + room); // Replace with your room name
 
         const handleSongDetails = (song) => {
+            console.log(song);
             setData(song);
         };
 
-        socket.on("songDetails", handleSongDetails);
+        socket.on("songDetailsMin", handleSongDetails);
 
         return () => {
-            socket.off("songDetails", handleSongDetails);
+            socket.off("songDetailsMin", handleSongDetails);
         };
     }, [room]);
 
@@ -39,8 +40,8 @@ function RoomInfo({ room, audio }) {
                     <img className="w-[60px] h-[60px]" src={data.cover} alt={data.name} />
                     <div>
                         <h2>Now Playing:</h2>
-                        <p>Song: {data.name}</p>
-                        <p>Artist: {data.artists[0]}</p>
+                        <p>Song: {data?.name}</p>
+                        <p>Artist: {data?.artists[0]}</p>
                     </div>
                 </div>
             ) : (
