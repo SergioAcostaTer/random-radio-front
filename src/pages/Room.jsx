@@ -6,20 +6,24 @@ import RoomsInfo from "../components/RoomsInfo";
 
 function Room() {
     const { room } = useParams();
+    const [sockett, setSocket] = useState(null);
 
-    // const socket = io("http://192.168.1.133:4000/" + room); // Replace with your room name
-    const socket = io("https://random-radio-back.onrender.com/" + room); // Replace with your room name
-    // const socket = io("http://192.168.0.30:4000/" + room); // Replace with your room name
+
+
 
     // State to store users, chat messages, and current song details
     const [data, setData] = useState(null);
     const [audioElement, setAudioElement] = useState(null);
 
-    console.log(socket);
 
 
     useEffect(() => {
+        // const socket = io("http://192.168.1.133:4000/" + room); // Replace with your room name
+        const socket = io("https://random-radio-back.onrender.com/" + room); // Replace with your room name
+        // const socket = io("http://192.168.0.30:4000/" + room); // Replace with your room name
+        console.log(socket);
         // Set the socket state
+        setSocket(socket);
 
         const handleSongDetails = (data) => {
             console.log(data);
@@ -34,7 +38,7 @@ function Room() {
             audio.play();
         };
 
-        
+
 
 
         socket.on("songDetails", (song) => handleSongDetails(song));
@@ -53,16 +57,19 @@ function Room() {
 
     return (
         <>
-            <div className="flex h-full">
-                <div>
+            <div className="h-full w-full relative">
+                <div className="bg-blue-500 w-[280px] absolute top-0 left-0 h-full">
                     <RoomsInfo audio={audioElement} />
                 </div>
-                <div>
+                <div className="ml-[280px] mr-[360px]">
                     <h1>Now Playing: {data?.name} - {data?.artists[0]}</h1>
                 </div>
-                <div>
-                    <Chat socket={socket} />
-                </div>
+
+                {
+                    sockett
+                        ? <Chat socket={sockett} />
+                        : null
+                }
             </div>
 
         </>

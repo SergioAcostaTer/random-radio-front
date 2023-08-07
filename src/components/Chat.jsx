@@ -15,7 +15,6 @@ const Chat = ({ socket }) => {
       setMessages((messages) => [...messages, data]);
       console.log(data);
     });
-    
 
     return () => {
       socket.off("newMessage");
@@ -45,24 +44,26 @@ const Chat = ({ socket }) => {
 
   return (
     <>
-      <h1>Chat</h1>
+      <div className="w-[360px] bg-blue-500 absolute top-0 right-0">
+        <h1>Chat</h1>
 
-      <form onSubmit={sendMessage}>
-        <input
-          type="text"
-          placeholder="Message"
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-        />
-        <button type="submit">Send</button>
-      </form>
+        <form onSubmit={sendMessage}>
+          <input
+            type="text"
+            placeholder="Message"
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+          />
+          <button type="submit">Send</button>
+        </form>
 
 
-      <ul>
-        {messages.map((messageData, index) => (
-          <li key={index}>{messageData.message}</li>
-        ))}
-      </ul>
+        <ul>
+          {messages.map((messageData, index) => (
+            <li key={index}>{messageData.message}</li>
+          ))}
+        </ul>
+      </div>
 
 
     </>
