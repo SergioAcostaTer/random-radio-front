@@ -31,7 +31,7 @@ function Room() {
         
             try {
                 // Make a fetch request to the URL to check its status
-                const response = await axios(data.url, {
+                const response = await axios.head(data.url, {
                     method: "GET",
                     mode: "no-cors",
                 });
