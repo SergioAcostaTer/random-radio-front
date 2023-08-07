@@ -37,7 +37,7 @@ function Room() {
             audio.play();
         };
 
-        socket.emit("joinRoom", room)
+        socket.emit("joinRoom")
 
         socket.on("userCount", (users) => {
             setUsers(users);
@@ -49,7 +49,7 @@ function Room() {
 
         // Clean up on unmount
         return () => {
-            socket.emit("leaveRoom", room)
+            socket.emit("leaveRoom")
             socket.off("songDetails", handleSongDetails);
             if (audioElement) {
                 audioElement.pause();
