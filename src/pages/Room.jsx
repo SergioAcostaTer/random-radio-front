@@ -21,8 +21,6 @@ function Room() {
         // const socket = io("http://192.168.1.133:4000/" + room); // Replace with your room name
         const socket = io("https://random-radio-back.onrender.com/" + room); // Replace with your room name
         // const socket = io("http://192.168.0.30:4000/" + room); // Replace with your room name
-        console.log(socket);
-        // Set the socket state
         setSocket(socket);
 
         const handleSongDetails = (data) => {
@@ -38,6 +36,11 @@ function Room() {
             audio.play();
         };
 
+        socket.emit("joinRoom", room)
+
+        socket.on("userCount", (users) => {
+            console.log(users);
+        });
 
 
 
@@ -45,6 +48,7 @@ function Room() {
 
         // Clean up on unmount
         return () => {
+            socket.emit("leaveRoom", room)
             socket.off("songDetails", handleSongDetails);
             if (audioElement) {
                 audioElement.pause();

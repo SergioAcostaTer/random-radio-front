@@ -14,8 +14,6 @@ function RoomInfo({ room, audio }) {
         const socket = io("https://random-radio-back.onrender.com/" + room); // Replace with your room name
         // const socket = io("http://192.168.0.30:4000/" + room); // Replace with your room name
 
-        socket.emit("getUsers")
-
         const handleSongDetails = (song) => {
             setData(song);
         };

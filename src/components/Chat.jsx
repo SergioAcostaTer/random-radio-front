@@ -4,8 +4,6 @@ import { useEffect, useState } from "react";
 
 const Chat = ({ socket }) => {
 
-  console.log(socket);
-
   const [messages, setMessages] = useState([]);
   const [message, setMessage] = useState("");
 
@@ -13,7 +11,6 @@ const Chat = ({ socket }) => {
   useEffect(() => {
     socket.on("newMessage", (data) => {
       setMessages((messages) => [...messages, data]);
-      console.log(data);
     });
 
     return () => {
@@ -21,16 +18,8 @@ const Chat = ({ socket }) => {
     };
   }, [socket]);
 
-  useEffect(() => {
-    console.log(messages);
-  }, [messages]);
-
-
-
   const sendMessage = (e) => {
     e.preventDefault();
-
-    console.log(message);
 
     socket.emit("newMessage", {
       message: message,
@@ -39,8 +28,6 @@ const Chat = ({ socket }) => {
 
     setMessage("");
   };
-
-
 
   return (
     <>
