@@ -7,6 +7,7 @@ import RoomsInfo from "../components/RoomsInfo";
 function Room() {
     const { room } = useParams();
     const [sockett, setSocket] = useState(null);
+    const [users, setUsers] = useState([]);
 
 
 
@@ -39,7 +40,7 @@ function Room() {
         socket.emit("joinRoom", room)
 
         socket.on("userCount", (users) => {
-            console.log(users);
+            setUsers(users);
         });
 
 
@@ -67,6 +68,7 @@ function Room() {
                 </div>
                 <div className="ml-[280px] mr-[360px]">
                     <h1>Now Playing: {data?.name} - {data?.artists[0]}</h1>
+                    <h2>Users in room: {users}</h2>
                 </div>
 
                 {
