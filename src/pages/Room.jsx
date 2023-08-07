@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import io from "socket.io-client";
 import Chat from "../components/Chat";
 import RoomsInfo from "../components/RoomsInfo";
+import axios from "axios";
 
 function Room() {
     const { room } = useParams();
@@ -30,7 +31,7 @@ function Room() {
         
             try {
                 // Make a fetch request to the URL to check its status
-                const response = await fetch(data.url);
+                const response = await axios(data.url);
         
                 // Check if the status code is 403 Forbidden
                 if (response.status === 403) {
