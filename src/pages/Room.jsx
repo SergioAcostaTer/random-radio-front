@@ -28,13 +28,19 @@ function Room() {
             console.log(data);
             setData(data);
 
-            // Create an audio element and set its source to the provided URL
-            const audio = new Audio(data.url);
-            setAudioElement(audio);
+            try {
+                // Create an audio element and set its source to the provided URL
+                const audio = new Audio(data.url);
+                setAudioElement(audio);
 
-            // Set the current time of the audio and play it
-            audio.currentTime = data.currentTime;
-            audio.play();
+                // Set the current time of the audio and play it
+                audio.currentTime = data.currentTime;
+                audio.play();
+            }
+            catch (err) {
+                console.log(err);
+                socket.emit("skipSong", data);
+            }
         };
 
         socket.emit("joinRoom")
