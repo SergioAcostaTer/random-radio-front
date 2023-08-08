@@ -40,13 +40,13 @@ const roomsInfo = [
 
 
 
-const RoomsInfo = ({}) => {
+const RoomsInfo = ({refreshDeleteChat}) => {
     return (
         <>
 
         {
             roomsInfo.map((roomInfo) => (
-                <RoomInfo roomInfo={roomInfo} />
+                <RoomInfo key={roomInfo.roomName} roomInfo={roomInfo} refreshDeleteChat={refreshDeleteChat} />
             ))
             
         }

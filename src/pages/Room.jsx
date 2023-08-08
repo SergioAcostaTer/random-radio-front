@@ -10,6 +10,11 @@ function Room() {
     const [sockett, setSocket] = useState(null);
     const [users, setUsers] = useState([]);
     const [irefLoaded, setIrefLoaded] = useState(false);
+    const [deleteChat, setDeleteChat] = useState(false); // Delete chat messages when the song changes
+
+    const refreshDeleteChat = () => {
+        setDeleteChat(!deleteChat);
+    };
 
     // State to store users, chat messages, and current song details
     const [data, setData] = useState(null);
@@ -88,11 +93,11 @@ function Room() {
 
     return (
         <>
-            <div className="h-full w-full relative">
-                <div className="bg-blue-500 w-[300px] absolute top-0 left-0 h-full">
-                    <RoomsInfo />
+            <div className="h-full w-full relative flex flex-col lg:flex-row">
+                <div className="bg-blue-500 w-full h-full grid grid-cols-3 grid-rows-2 lg:block lg:w-[300px] h-[200px]">
+                    <RoomsInfo refreshDeleteChat={refreshDeleteChat} />
                 </div>
-                <div className="ml-[300px] mr-[360px] h-full" style={{ backgroundColor: data?.colors[1]?.hex }}>
+                <div className="h-full flex-1" style={{ backgroundColor: data?.colors[1]?.hex }}>
                     <h1 style={{ color: "black" }}>{data?.name} - {data?.artists[0]}</h1>
                     <h2>Users in room: {users}</h2>
                     {
@@ -116,7 +121,7 @@ function Room() {
                     
                 </div>
 
-                {sockett ? <Chat socket={sockett} /> : null}
+                {sockett ? <Chat deleteChat={deleteChat} socket={sockett} /> : null}
 
             </div>
         </>

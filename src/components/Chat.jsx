@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import Message from "./Message";
 
 
-const Chat = ({ socket }) => {
+const Chat = ({ socket, deleteChat }) => {
 
   const [messages, setMessages] = useState([]);
   const [message, setMessage] = useState("");
@@ -32,9 +32,15 @@ const Chat = ({ socket }) => {
     setMessage("");
   };
 
+  useEffect(() => {
+    if (deleteChat) {
+      setMessages([]);
+    }
+  }, [deleteChat]);
+
   return (
     <>
-      <div className="w-[360px] absolute top-0 right-0 h-[100vh] flex flex-col justify-between border-[1px]">
+      <div className="w-[360px] top-0 right-0 h-[100vh] flex flex-col justify-between border-[1px]">
         <div>
           <div className="w-full h-[50px] text-xs bg-[#18181B30] border-[1px]">
             <h1>Chat del stream</h1>
