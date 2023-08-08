@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import io from "socket.io-client";
 import Chat from "../components/Chat";
 import RoomsInfo from "../components/RoomsInfo";
-import YouTube from "react-youtube";
 
 function Room() {
     const { room } = useParams();
@@ -30,8 +29,8 @@ function Room() {
       }, [data]);
 
     useEffect(() => {
-        // const socket = io("https://random-radio-back.onrender.com/" + room); // Replace with your room name
-        const socket = io("http://localhost:3000/" + room); // Replace with your room name
+        const socket = io("https://random-radio-back.onrender.com/" + room); // Replace with your room name
+        // const socket = io("http://localhost:3000/" + room); // Replace with your room name
 
         setSocket(socket);
 
