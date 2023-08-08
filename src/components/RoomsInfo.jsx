@@ -1,8 +1,6 @@
 import RoomInfo from "./RoomInfo";
 
 // RoomsInfo.js
-const roomNames = ["room1", "room2", "room3", "room4", "room5", "room6"];
-
 
 const roomsInfo = [
   {

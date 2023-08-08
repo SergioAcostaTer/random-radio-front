@@ -37,8 +37,8 @@ function Room() {
     }, [data]);
 
     useEffect(() => {
-        // const socket = io("https://random-radio-back.onrender.com/" + room); // Replace with your room name
-        const socket = io("http://localhost:3000/" + room); // Replace with your room name
+        const socket = io("https://random-radio-back.onrender.com/" + room); // Replace with your room name
+        // const socket = io("http://localhost:3000/" + room); // Replace with your room name
 
         setSocket(socket);
 

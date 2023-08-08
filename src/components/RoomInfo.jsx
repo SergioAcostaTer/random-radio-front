@@ -9,7 +9,8 @@ function RoomInfo({ roomInfo }) {
     const navigate = useNavigate();
 
     useEffect(() => {
-        const socket = io("http://localhost:3000/" + roomInfo.roomName);
+        // const socket = io("http://localhost:3000/" + roomInfo.roomName);
+        const socket = io("https://random-radio-back.onrender.com/" + roomInfo.roomName);
 
         const handleSongDetails = (song) => {
             setData(song);
