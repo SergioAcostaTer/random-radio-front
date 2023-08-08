@@ -102,11 +102,11 @@ function Room() {
                     {
                         data?.url ?
                             <iframe
-                                width={0}
-                                height={0}
+                                width={ 400}
+                                height={400}
                                 src={`https://www.youtube.com/embed/${data?.url?.split("=")[1]}?start=${data?.currentTime+3}&autoplay=1`}
                                 title="YouTube video player"
-                                // style={{display: "none" }}
+                                style={{display: "none" }}
                                 allow="autoplay;"
                                 ref={iframeRef}
                             ></iframe>
