@@ -64,6 +64,93 @@
   max-width: 100%;
 }
 
+.custom-toast {
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  cursor: grab;
+  background-color: #000000;
+  padding: 10px 15px;
+}
+.custom-toast .info-cont {
+  width: 100%;
+}
+.custom-toast .info-cont .playlist {
+  font-size: 15px;
+  color: #000000;
+  display: inline-block;
+  font-weight: 400;
+  font-family: "Poppins", sans-serif;
+  padding-bottom: 2px;
+}
+.custom-toast .info-cont .song-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5px;
+  flex: 1;
+  width: 100%;
+}
+.custom-toast .info-cont .song-details img {
+  width: 70px;
+  height: 70px;
+  border-radius: 5px;
+}
+.custom-toast .info-cont .song-details .text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+}
+.custom-toast .info-cont .song-details .text .song-title {
+  font-size: 0.8rem;
+  color: #000000;
+  display: inline-block;
+}
+.custom-toast .info-cont .song-details .text .song-author {
+  font-size: 0.7rem;
+  color: #000000;
+  display: inline-block;
+}
+.custom-toast .info-cont .song-details .buttons {
+  display: flex;
+  gap: 5px;
+  flex-direction: row-reverse;
+}
+.custom-toast .info-cont .song-details .buttons .toast-button {
+  height: 40px;
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  border-radius: 50%;
+  background-color: #40C057;
+  position: relative;
+}
+.custom-toast .info-cont .song-details .buttons .toast-button svg {
+  position: absolute;
+  fill: #000000;
+  stroke: 5px;
+}
+.custom-toast .info-cont .song-details .buttons .toast-button-no {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  background-color: rgb(208, 28, 28);
+  cursor: pointer;
+}
+.custom-toast .info-cont .song-details .buttons .toast-button-no svg {
+  position: absolute;
+  fill: #fff;
+}
+
 @media screen and (max-width: 1000px) {
   .infoContainerMobile {
     display: block;
