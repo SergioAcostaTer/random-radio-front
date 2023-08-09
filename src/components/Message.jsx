@@ -24,7 +24,7 @@ export default function Message({ user = "Sergio", message }) {
 
     return (
         <>
-            <li className="flex gap-[5px]">
+            <li className="message">
                 <h3 style={{color: color}} >{user}:</h3>
                 <p>{message}</p>
             </li>

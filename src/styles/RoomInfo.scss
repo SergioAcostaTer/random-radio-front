@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700&display=swap');
+
+
+.infoContainer{
+    position: relative;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    cursor: pointer;
+    border-radius: 6px;
+    border: 1px solid black;
+
+
+    .roomTitle{
+        font-size: 1rem;
+        font-weight: 600;
+        margin-bottom:7px;
+        margin-top:   7px;
+        text-align: center;
+    }
+
+    .titlesCont{
+        display: flex;
+        padding-left: 15px;
+        gap: 20px;
+        
+        img{
+            width: 60px;
+            height:60px;
+            border-radius: 5px;
+        };
+
+        .text{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            font-weight: 600;
+            font-family: 'Poppins', sans-serif;
+
+            .title{
+                font-size: .8rem;
+            }
+
+            .author{
+                font-size: .7rem;
+                color: #9e9e9e;
+            }
+        }
+        
+    }
+
+    .progressCont{
+        width: 100%;
+        height: 5px;
+        background-color: #e0e0e0;
+        margin-bottom: .5rem;
+        margin-top: .5rem;
+        position: relative;
+
+        .progressBar{
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            max-width: 100%;
+        }
+    }
+}
+

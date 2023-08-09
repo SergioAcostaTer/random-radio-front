@@ -1,17 +1,20 @@
 //Chat.js
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Message from "./Message";
+import "../styles/Chat.css"
 
 
 const Chat = ({ socket, deleteChat }) => {
 
   const [messages, setMessages] = useState([]);
   const [message, setMessage] = useState("");
+  const list = useRef(null);
 
 
   useEffect(() => {
     socket.on("newMessage", (data) => {
       setMessages((messages) => [...messages, data]);
+      list.current.scrollTop = list.current.scrollHeight;
     });
 
     return () => {
@@ -39,38 +42,32 @@ const Chat = ({ socket, deleteChat }) => {
   }, [deleteChat]);
 
   return (
-    <>
-      <div className="w-[360px] top-0 right-0 h-[100vh] flex flex-col justify-between border-[1px]">
-        <div>
-          <div className="w-full h-[50px] text-xs bg-[#18181B30] border-[1px]">
-            <h1>Chat del stream</h1>
-          </div>
-
-          <ul className="p-2">
-            {messages.map((messageData, index) => (
-              <Message key={index} user={messageData.id} message={messageData.message} />
-            ))}
-          </ul>
-        </div>
-
-        <form onSubmit={sendMessage} className="h-[100px] flex flex-col items-center gap-2">
-          <input
-            className="w-[95%] h-[40px] border-[1px] rounded-lg"
-            type="text"
-            placeholder="Message"
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-          />
-          <div className="w-full flex justify-end p-2">
-            <button type="submit" className="bg-blue-500 p-1">Send</button>
-          </div>
-        </form>
+    <div className="chat__cont">
+      <div className="chat__header">
+        <h1 className="noselect">Chat del stream</h1>
       </div>
 
 
+      <ul className="messages__cont" ref={list}>
+        {messages.map((messageData, index) => (
+          <Message key={index} user={messageData.id} message={messageData.message} />
+        ))}
+      </ul>
 
+      <form onSubmit={sendMessage} className="form">
+        <input
+          className="input-tx"
+          type="text"
+          placeholder="Message"
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+        />
+        <div className="button_container noselect">
+          <button type="submit">Send</button>
+        </div>
+      </form>
 
-    </>
+    </div>
   );
 };
 

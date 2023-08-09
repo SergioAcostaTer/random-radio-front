@@ -3,6 +3,10 @@ import { useParams } from "react-router-dom";
 import io from "socket.io-client";
 import Chat from "../components/Chat";
 import RoomsInfo from "../components/RoomsInfo";
+import "../styles/layout.css";
+import MusicPlayer from "../components/MusicPlayer";
+import Background from "../components/Background";
+
 
 function Room() {
     const { room } = useParams();
@@ -21,7 +25,7 @@ function Room() {
 
     useEffect(() => {
         // Wait for the iframe to be loaded
-        const iframe = iframeRef.current;
+        let iframe = iframeRef.current;
         console.log(iframe);
 
         if (iframe) {
@@ -38,7 +42,13 @@ function Room() {
 
         //when something starts playing audio setIrefLoaded to true
 
-       
+        return () => {
+            //destroy the iframe
+            setIrefLoaded(false);
+            iframe = null;
+        }
+
+
     }, [data]);
 
     useEffect(() => {
@@ -63,7 +73,6 @@ function Room() {
         socket.on("songDetails", (song) => handleSongDetails(song));
 
         return () => {
-            setIrefLoaded(false);
             socket.emit("leaveRoom");
             socket.off("songDetails", handleSongDetails);
             socket.disconnect();
@@ -71,58 +80,42 @@ function Room() {
     }, [room]);
 
 
-    function getContrastColor(background) {
-        // Remove the "#" symbol if present
-
-        if (background.charAt(0) === "#") {
-            background = background.slice(1);
-        }
-
-        // Convert the hexadecimal color to RGB components
-        const r = parseInt(background.substr(0, 2), 16);
-        const g = parseInt(background.substr(2, 2), 16);
-        const b = parseInt(background.substr(4, 2), 16);
-
-        // Calculate relative luminance using the formula for sRGB colors
-        const luminance = (0.2126 * r + 0.7152 * g + 0.0722 * b) / 255;
-
-        // Determine whether to use white or black text based on luminance
-        return luminance > 0.5 ? ["#000000", "#ffffff"] : ["#ffffff", "#000000"];
-    }
-
-
     return (
         <>
-            <div className="h-full w-full relative flex flex-col lg:flex-row">
-                <div className="bg-blue-500 w-full h-full grid grid-cols-3 grid-rows-2 lg:block lg:w-[300px] h-[200px]">
+            <div className="full-container" style={{
+                    backgroundColor: data?.colors[1].hex,
+                }}>
+                <div className="roomInfo__cont" >
                     <RoomsInfo refreshDeleteChat={refreshDeleteChat} />
                 </div>
-                <div className="h-full flex-1" style={{ backgroundColor: data?.colors[1]?.hex }}>
-                    <h1 style={{ color: "black" }}>{data?.name} - {data?.artists[0]}</h1>
-                    <h2>Users in room: {users}</h2>
-                    {
-                        irefLoaded ? null : <h1>Loading...</h1>
-                    }
+                <div className="main__cont"
+                    style={{
+                        backgroundColor: data?.colors[1].hex
+                    }}
+                >
+                    <Background color={data?.colors[0].hex}/>
+
+                    <MusicPlayer loading={!irefLoaded} currentTime={data?.currentTime} duration={data?.duration} cover={data?.cover} title={data?.name} artists={data?.artists} colors={data?.colors} />
 
                     {
                         data?.url ?
                             <iframe
-                                width={ 400}
+                                width={400}
                                 height={400}
-                                src={`https://www.youtube.com/embed/${data?.url?.split("=")[1]}?start=${data?.currentTime+3}&autoplay=1`}
+                                src={`https://www.youtube.com/embed/${data?.url?.split("=")[1]}?start=${data?.currentTime + 3}&autoplay=1`}
                                 title="YouTube video player"
-                                style={{display: "none" }}
+                                style={{ display: "none" }}
                                 allow="autoplay;"
                                 ref={iframeRef}
                             ></iframe>
                             : null
                     }
 
-                    
+
                 </div>
-
-                {sockett ? <Chat deleteChat={deleteChat} socket={sockett} /> : null}
-
+                <>
+                    {sockett ? <Chat deleteChat={deleteChat} socket={sockett} /> : null}
+                </>
             </div>
         </>
     );

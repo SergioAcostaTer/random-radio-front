@@ -5,23 +5,23 @@ import RoomInfo from "./RoomInfo";
 const roomsInfo = [
   {
     roomName: "room1",
-    spotifyPlaylistID: "37i9dQZF1DX6XNIZUM3SKi",
-    title: "Barça Tour 2023⚽",
+    spotifyPlaylistID: "37i9dQZF1DXcBWIGoYBM5M",
+    title: "Today's Top Hits 🎧"
   },
   {
-    roomName: "room2",    
-    spotifyPlaylistID: "07MBp1t71mTJfuJvQpkGbN",
-    title: "Full Latinos",
+    roomName: "room2",
+    spotifyPlaylistID: "37i9dQZF1DX0XUsuxWHRQd",
+    title: "RapCaviar 🎤"
   },
   {
     roomName: "room3",
-    spotifyPlaylistID: "0IepDN73Y0GDNBycm63Ewx",
-    title: "RULETA ESCOPETA 🔫🥖",
+    spotifyPlaylistID: "37i9dQZF1DX10zKzsJ2jva",
+    title: "Viva Latino! 🎉"
   },
   {
     roomName: "room4",
-    spotifyPlaylistID: "37i9dQZEVXbLRQDuF5jeBp",
-    title: "Top 50 EE.UU 🔫"
+    spotifyPlaylistID: "37i9dQZF1DX4o1oenSJRJd",
+    title: "All Out 00s 🎧"
   },
   {
     roomName: "room5",
@@ -30,11 +30,30 @@ const roomsInfo = [
   },
   {
     roomName: "room6",
+    spotifyPlaylistID: "37i9dQZEVXbLRQDuF5jeBp",
+    title: "Top 50 EE.UU 🔫"
+  },
+  {
+    roomName: "room7",
     spotifyPlaylistID: "37i9dQZEVXbNFJfN1Vw8d9",
     title: "Top 50 España 🇪🇸🇪🇸"
   },
+  {
+    roomName: "room8",
+    spotifyPlaylistID: "37i9dQZF1DX6XNIZUM3SKi",
+    title: "Barça Tour 2023⚽",
+  },
+  {
+    roomName: "room9",    
+    spotifyPlaylistID: "07MBp1t71mTJfuJvQpkGbN",
+    title: "Full Latinos",
+  },
+  {
+    roomName: "room10",
+    spotifyPlaylistID: "0IepDN73Y0GDNBycm63Ewx",
+    title: "RULETA ESCOPETA 🔫🥖",
+  }
 ];
-
 
 
 
@@ -46,7 +65,7 @@ const RoomsInfo = ({refreshDeleteChat}) => {
 
         {
             roomsInfo.map((roomInfo) => (
-                <RoomInfo key={roomInfo.roomName} roomInfo={roomInfo} refreshDeleteChat={refreshDeleteChat} />
+                <RoomInfo key={roomInfo.roomName} roomInfo={roomInfo} refreshDeleteChat={refreshDeleteChat}/>
             ))
             
         }
