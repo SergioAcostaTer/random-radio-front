@@ -74,9 +74,11 @@ const Chat = ({ socket, deleteChat }) => {
 
 
 
-      <div className="chat__cont-mobile" style={showChat? {top: 0} : {bottom:"-90vh"}}>
-        <div className="chat__header" onClick={() => setShowChat(!showChat)}>
+      <div className="chat__cont-mobile" style={showChat? {bottom: 0} : {bottom:"calc(-100vh + 120px)"}}>
+        <div className="chat__header" style={showChat? {alignItems: "center", height: 60, padding:0} : {alignItems: "start", height: 120, paddingTop: 20}}  onClick={() => setShowChat(!showChat)}>
+          <p>up</p>
           <h1 className="noselect">Chat del stream</h1>
+          <p>up</p>
         </div>
 
         <ul className="messages__cont" ref={list}>

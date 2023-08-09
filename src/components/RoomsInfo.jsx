@@ -52,6 +52,16 @@ const roomsInfo = [
     roomName: "room10",
     spotifyPlaylistID: "0IepDN73Y0GDNBycm63Ewx",
     title: "RULETA ESCOPETA 🔫🥖",
+  },
+  {
+    roomName: "room11",
+    spotifyPlaylistID: "37i9dQZF1DWWMOmoXKqHTD",
+    title: "Songs to Sing in the Car 🚗🎶",
+  },
+  {
+    roomName: "room12",
+    spotifyPlaylistID: "37i9dQZF1DX0BcQWzuB7ZO",
+    title: "Dance Hits 🕺",
   }
 ];
 
