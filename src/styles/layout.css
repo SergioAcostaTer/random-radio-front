@@ -27,11 +27,23 @@
   position: relative;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1300px) {
+  .full-container .roomInfo__cont {
+    width: 250px;
+  }
+}
+@media screen and (max-width: 1000px) {
   .full-container {
     flex-direction: column;
   }
   .full-container .roomInfo__cont {
+    width: 100%;
+    height: 25vh;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+  }
+  .full-container .infoContainer {
     width: 100%;
     height: 300px;
     display: none;
@@ -40,8 +52,7 @@
     width: 100%;
     height: auto;
     flex: none;
-    padding: 20px 0;
-    padding-top: 80px;
+    padding: 40px 0;
   }
 }
 /* ===== Scrollbar CSS ===== */

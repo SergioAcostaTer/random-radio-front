@@ -7,6 +7,7 @@
   flex-direction: column;
   justify-content: space-between;
   max-height: 100vh;
+  transition: all 0.1s ease-in-out;
 }
 .chat__cont .chat__header {
   z-index: 100;
@@ -85,7 +86,13 @@
   transition: all 0.1s ease-in-out;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1200px) {
+  .chat__cont {
+    width: 100%;
+    max-width: 280px;
+  }
+}
+@media screen and (max-width: 1000px) {
   .chat__cont {
     width: 100%;
     max-width: none;

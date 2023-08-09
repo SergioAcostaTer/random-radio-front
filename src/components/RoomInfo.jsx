@@ -43,7 +43,7 @@ function RoomInfo({ roomInfo, refreshDeleteChat }) {
         };
     }, [data, currentTime]);
 
-    
+
 
     return (
         <>
@@ -58,7 +58,7 @@ function RoomInfo({ roomInfo, refreshDeleteChat }) {
                         style={{
                             color: getContrastColor(data?.colors[0]?.hex)[0]
                         }}
-                    
+
                     >{roomInfo?.title}</h1>
 
                     <div className="titlesCont noselect">
@@ -78,6 +78,18 @@ function RoomInfo({ roomInfo, refreshDeleteChat }) {
             ) : (
                 <p>No song currently playing.</p>
             )}
+
+            <div className="infoContainerMobile" onClick={() => {
+                refreshDeleteChat();
+                if (window.location.pathname !== `/${roomInfo?.roomName}`) {
+                    navigate(`/${roomInfo?.roomName}`);
+                }
+            }}>
+                <img className="noselect" src={data?.cover} alt={data?.name} />
+            </div>
+
+
+
 
             {/* {data && (
                 <div className="progress-bar">

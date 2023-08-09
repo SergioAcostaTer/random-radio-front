@@ -20,6 +20,7 @@
     border-radius: 20px;
     z-index: 1200;
     animation: boxshadowGlow 1.5s infinite;
+    transition: all 0.1s ease-in-out;
 
     .musicPlayer__cover {
         height: 100%;
@@ -66,6 +67,7 @@
             font-size: .8rem;
             color: #9e9e9e;
             margin-bottom: 1rem;
+            text-align: center;
         }
 
         .musicPlayer__progress {
@@ -90,12 +92,12 @@
 }
 
 
-@media screen and (max-width: 1124px) {
+@media screen and (max-width: 1200px) {
     .musicPlayer__cont {
         display: flex;
         border-radius: 20px;
-        width: 80%;
-        aspect-ratio: 540/250;
+        width: calc(540px*.8);
+        height:calc(250px*.8);
         .musicPlayer__info {
             .musicPlayer__title {
                 font-size: 0.8rem;
@@ -103,19 +105,32 @@
 
         }
     }
-
 }
 
 
-@media screen and (max-width: 764px) {
+@media screen and (max-width: 1000px) {
     .musicPlayer__cont {
         display: flex;
-        height: 176px;
+        height: 200px;
         border-radius: 20px;
         width: 95%;
+        max-width: 500px;
     }
-
 }
+
+@media screen and (max-width: 500px) {
+    .musicPlayer__cont {
+        display: flex;
+        height: 178px;
+        border-radius: 20px;
+        width: 95%;
+        max-width: 500px;
+    }
+}
+
+
+
+
 
 
 .loading {
