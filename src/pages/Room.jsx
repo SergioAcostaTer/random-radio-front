@@ -14,6 +14,7 @@ function Room() {
     const [sockett, setSocket] = useState(null);
     const [irefLoaded, setIrefLoaded] = useState(false);
     const [deleteChat, setDeleteChat] = useState(false); // Delete chat messages when the song changes
+    const [volume, setVolume] = useState(50); // Volume state
 
     const refreshDeleteChat = () => {
         setDeleteChat(!deleteChat);
@@ -27,15 +28,19 @@ function Room() {
         let iframe = iframeRef.current;
         console.log(iframe);
 
+
         if (iframe) {
             iframe.onload = () => {
+                const player = iframe.contentWindow;
+                player.postMessage({
+                    event: 'command',
+                    func: 'setVolume',
+                    args: [volume],
+                }, '*');
+            
                 // The iframe (YouTube player) is now loaded
                 console.log('Player is loaded');
-
                 setIrefLoaded(true);
-
-                //same volume as the player
-                iframe.contentWindow.postMessage('{"event":"command","func":"' + 'setVolume' + '","args":[' + 100 + ']}', '*');
             };
         }
 
@@ -56,18 +61,11 @@ function Room() {
 
         setSocket(socket);
 
-
         const handleSongDetails = (data) => {
             console.log(data);
             setIrefLoaded(false)
             setData(data);
         };
-
-        socket.emit("joinRoom");
-
-        socket.on("userCount", (users) => {
-            setUsers(users);
-        });
 
         socket.on("songDetails", (song) => handleSongDetails(song));
 
@@ -97,6 +95,27 @@ function Room() {
                     <Background color={data?.colors[0].hex} />
 
                     <MusicPlayer loading={!irefLoaded} currentTime={data?.currentTime} duration={data?.duration} cover={data?.cover} title={data?.name} artists={data?.artists} colors={data?.colors} />
+
+                    {/* <input
+                        type="range"
+                        min="0"
+                        max="100"
+                        value={volume}
+                        style={{
+                            zIndex: 100000,
+                        }}
+                        onChange={(e) => {
+                            const newVolume = e.target.value;
+                            setVolume(newVolume);
+                            console.log(newVolume);
+                            const player = iframeRef.current.contentWindow;
+                            player.postMessage({
+                                event: 'command',
+                                func: 'setVolume',
+                                args: [newVolume],
+                            }, '*');
+                        }}
+                    /> */}
 
                     {
                         data?.url ?

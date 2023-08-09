@@ -69,7 +69,7 @@ function RoomInfo({ roomInfo, refreshDeleteChat }) {
                     </div>,
                     {
                         position: "bottom-center",
-                        autoClose: 7000,
+                        autoClose: 3000,
                         closeButton: false,
                         //no icon
                         icon: false,
@@ -87,7 +87,7 @@ function RoomInfo({ roomInfo, refreshDeleteChat }) {
                         },
                         progressStyle: {
                             // backgroundColor: song.colors[0].hex,
-                            backgroundColor: "transparent",
+                            // backgroundColor: "transparent",
                         }
                     }
                 );
