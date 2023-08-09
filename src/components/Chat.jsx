@@ -5,10 +5,11 @@ import "../styles/Chat.css"
 import socketIO from "socket.io-client";
 import Draggable from 'react-draggable';
 import generateFunnyName from "../services/nameGenerator";
+import randomColor from "../services/randomColor";
 
 
 const Chat = ({ deleteChat }) => {
-  const [user, setUser] = useState(""); // [user, setUser]
+  const [user, setUser] = useState({}); // [user, setUser]
   const [messages, setMessages] = useState([]);
   const [message, setMessage] = useState("");
   const list = useRef(null);
@@ -19,7 +20,10 @@ const Chat = ({ deleteChat }) => {
 
   useEffect(() => {
 
-    setUser(generateFunnyName());
+    setUser({
+      user: generateFunnyName(),
+      color: randomColor(),
+    });
 
     // const socket = socketIO("http://localhost:3000/")
     const socket = socketIO("https://random-radio-back.onrender.com/")
@@ -51,7 +55,8 @@ const Chat = ({ deleteChat }) => {
     socket.emit("newMessage", {
       message: message,
       id: socket.id,
-      user: user,
+      user: user.user,
+      color: user.color,
     });
 
     setMessage("");
@@ -86,7 +91,7 @@ const Chat = ({ deleteChat }) => {
 
         <ul className="messages__cont" ref={list}>
           {messages.map((messageData, index) => (
-            <Message key={index} user={messageData.user} message={messageData.message} />
+            <Message key={index} user={messageData.user} color={messageData.color} message={messageData.message} />
           ))}
         </ul>
 
