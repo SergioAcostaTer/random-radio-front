@@ -12,7 +12,6 @@ function Room() {
     const { room } = useParams();
     const iframeRef = useRef(null);
     const [sockett, setSocket] = useState(null);
-    const [users, setUsers] = useState([]);
     const [irefLoaded, setIrefLoaded] = useState(false);
     const [deleteChat, setDeleteChat] = useState(false); // Delete chat messages when the song changes
 
@@ -80,20 +79,22 @@ function Room() {
     }, [room]);
 
 
+
     return (
         <>
             <div className="full-container" style={{
-                    backgroundColor: data?.colors[1].hex,
-                }}>
-                <div className="roomInfo__cont" >
+                backgroundColor: data?.colors[1].hex,
+            }}>
+                <div className="roomInfo__cont">
                     <RoomsInfo refreshDeleteChat={refreshDeleteChat} />
                 </div>
+
                 <div className="main__cont"
                     style={{
                         backgroundColor: data?.colors[1].hex
                     }}
                 >
-                    <Background color={data?.colors[0].hex}/>
+                    <Background color={data?.colors[0].hex} />
 
                     <MusicPlayer loading={!irefLoaded} currentTime={data?.currentTime} duration={data?.duration} cover={data?.cover} title={data?.name} artists={data?.artists} colors={data?.colors} />
 

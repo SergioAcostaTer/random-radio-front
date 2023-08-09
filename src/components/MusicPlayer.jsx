@@ -18,7 +18,7 @@ const MusicPlayer = ({ cover, title, artists, colors, currentTime, duration, loa
         return () => {
             clearInterval(interval);
         };
-    }, [currentTime]);
+    }, [currentTime, duration]);
 
     useEffect(() => {
         setProgress((actualTime / duration) * 100); // Calculate the progress based on updated actualTime

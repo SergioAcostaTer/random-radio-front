@@ -7,10 +7,11 @@
   border-radius: 5px;
   padding: 5px 10px;
   display: flex;
+  cursor: grab;
 }
 .user__counter svg {
   margin-right: 5px;
-  fill: red;
+  fill: #000000;
 }
 .user__counter p {
   font-size: 0.8rem;
