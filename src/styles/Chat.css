@@ -1,3 +1,7 @@
+.chat__cont-mobile {
+  display: none;
+}
+
 .chat__cont {
   border-left: 1px solid #dedede;
   background-color: #ffffff;
@@ -96,5 +100,18 @@
   .chat__cont {
     width: 100%;
     max-width: none;
+    display: none;
   }
+  .chat__cont-mobile {
+    display: block;
+    position: absolute;
+    height: 100vh;
+    background-color: #dedede;
+    z-index: 2000;
+    bottom: -82vh;
+    width: 100%;
+  }
+}
+body {
+  overflow: hidden;
 }/*# sourceMappingURL=Chat.css.map */

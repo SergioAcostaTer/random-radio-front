@@ -3,6 +3,11 @@
 
 .infoContainerMobile{
     display: none;
+    cursor: pointer;
+    img{
+        border-radius: 7px;
+        filter: brightness(0.8);
+    }
 }
 .infoContainer{
     position: relative;
@@ -11,7 +16,7 @@
     flex-direction: column;
     cursor: pointer;
     border-radius: 6px;
-    border: 1px solid black;
+    border: 1px solid rgba(0, 0, 0, 0.65);
 
 
     .roomTitle{

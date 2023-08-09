@@ -38,10 +38,12 @@
   }
   .full-container .roomInfo__cont {
     width: 100%;
-    height: 25vh;
+    height: auto;
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    margin: 0;
+    padding: 7px;
+    padding-bottom: 0;
   }
   .full-container .infoContainer {
     width: 100%;
@@ -52,7 +54,12 @@
     width: 100%;
     height: auto;
     flex: none;
-    padding: 40px 0;
+    padding: 100px 0;
+  }
+}
+@media screen and (max-width: 600px) {
+  .full-container .roomInfo__cont {
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
   }
 }
 /* ===== Scrollbar CSS ===== */

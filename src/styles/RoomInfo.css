@@ -1,6 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700&display=swap");
 .infoContainerMobile {
   display: none;
+  cursor: pointer;
+}
+.infoContainerMobile img {
+  border-radius: 7px;
+  filter: brightness(0.8);
 }
 
 .infoContainer {
@@ -10,7 +15,7 @@
   flex-direction: column;
   cursor: pointer;
   border-radius: 6px;
-  border: 1px solid black;
+  border: 1px solid rgba(0, 0, 0, 0.65);
 }
 .infoContainer .roomTitle {
   font-size: 1rem;
