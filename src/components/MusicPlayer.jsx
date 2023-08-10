@@ -2,11 +2,12 @@ import '../styles/MusicPlayer.css';
 import { useEffect, useRef, useState } from 'react';
 import getContrastColor from "../services/getContrastColor";
 
-const MusicPlayer = ({ cover, title, artists, colors, currentTime, duration, loading }) => {
+const MusicPlayer = ({ cover, title, artists, colors, currentTime, duration, loading, volume }) => {
     const [progress, setProgress] = useState(0);
     const [actualTime, setActualTime] = useState(0);
     const cardRef = useRef(null);
     const [contrast, setContrast] = useState(""); // Contrast color
+    const [volumen, setVolumen] = volume;
 
     useEffect(() => {
         setActualTime(currentTime);
@@ -28,26 +29,13 @@ const MusicPlayer = ({ cover, title, artists, colors, currentTime, duration, loa
         setContrast(getContrastColor(colors ? colors[0].hex : "")); // Get the contrast color
     }, [colors]);
 
-
-    useEffect(() => {
-        document.addEventListener('mousemove', function (e) {
-            if (cardRef.current.contains(e.target)) {
-                let xAxis = (window.innerWidth / 2 - e.pageX) / 20 * 2.5;
-                let yAxis = (window.innerHeight / 2 - e.pageY) / 10 * 2.5;
-                cardRef.current.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
-            } else {
-                cardRef.current.style.transform = `rotateY(0deg) rotateX(0deg)`;
-            }
-        });
-    }, []);
-
     return (
         <div className="musicPlayer__cont" ref={cardRef} style={{
             backgroundColor: colors ? colors[0].hex : null,
             boxShadow: colors ? `0 0 200px ${colors[0].hex}` : null,
         }}>
             <div className="musicPlayer__cover noselect">
-                <img  className='noselect' src={cover} alt={title} />
+                <img className='noselect' src={cover} alt={title} />
                 <div className='wave-ani'>
                     <div className={loading ? "loading-off" : "loading"}>
                         <span></span>
@@ -72,6 +60,24 @@ const MusicPlayer = ({ cover, title, artists, colors, currentTime, duration, loa
                     }
                     .
                 </p>
+
+                <div className="wrapper">
+                    <p className='menos'>-</p>
+                    <input type="range"
+                        min="0"
+                        max="100"
+                        value={volumen}
+                        style={{
+                            zIndex: 100000,
+                        }}
+                        onChange={(e) => {
+                            const newVolume = e.target.value;
+                            setVolumen(newVolume);
+                            console.log(newVolume);
+                        }} />
+                    <p className='mas'>+</p>
+                </div>
+
                 <div className="musicPlayer__progress" style={{
                     backgroundColor: contrast ? contrast[0] : "",
                 }}>
