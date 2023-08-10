@@ -7,6 +7,7 @@ import Chat from "../components/Chat";
 import RoomsInfo from "../components/RoomsInfo";
 import MusicPlayer from "../components/MusicPlayer";
 import Background from "../components/Background";
+import Cookies from "../components/Cookies";
 
 import "../styles/layout.css";
 
@@ -46,6 +47,7 @@ function Room() {
 
     return (
         <>
+            <Cookies />
             <div className="full-container" style={{
                 backgroundColor: colors?.[1]?.hex,
             }}>

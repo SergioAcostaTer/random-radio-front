@@ -15,17 +15,12 @@ function RoomInfo({ roomInfo }) {
     const navigate = useNavigate();
     const [pageVisible, setPageVisible] = useState(true);
 
-    function clearAllToasts() {
-        const toasts = toast.getCurrentToastIds();
-        toasts.forEach((id) => toast.dismiss(id));
-    }
-
     useEffect(() => {
         const handleVisibilityChange = () => {
             setPageVisible(!document.hidden);
 
             if (!document.hidden) {
-                clearAllToasts();
+                toast.dismiss();
             }
         };
 
