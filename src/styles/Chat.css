@@ -17,7 +17,7 @@
   z-index: 100;
   border: 1px solid #dedede;
   padding: 10px 20px;
-  height: 60px;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -34,6 +34,7 @@
   display: flex;
   flex-direction: column;
   overflow: scroll;
+  margin: 0;
 }
 .chat__cont .messages__cont .message {
   display: flex;
@@ -42,6 +43,15 @@
   padding: 2px;
   cursor: pointer;
   border-radius: 6px;
+  align-items: center;
+}
+.chat__cont .messages__cont .message p {
+  margin: 0;
+  display: inline;
+}
+.chat__cont .messages__cont .message p span {
+  font-size: 1.1rem;
+  font-weight: 600;
 }
 .chat__cont .messages__cont .message:hover {
   background-color: #f1f1f1;
@@ -53,7 +63,7 @@
   gap: 5px;
 }
 .chat__cont .form .input-tx {
-  width: 96%;
+  width: 90%;
   height: 40px;
   border: 2px solid #dedede;
   border-radius: 6px;
@@ -74,11 +84,11 @@
 .chat__cont .form .button_container {
   width: 100%;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   padding: 5px;
 }
 .chat__cont .form .button_container button {
-  width: 100%;
+  width: 96%;
   height: 40px;
   border: none;
   border-radius: 6px;

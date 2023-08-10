@@ -77,10 +77,13 @@ function Room() {
                         width={0}
                         height={0}
                         onStart={() => setPlayerLoaded(true)}
+                        style={{ display: "none" }}
                     />
 
                 </div>
-                <Chat />
+                <>
+                    <Chat />
+                </>
             </div>
         </>
     );

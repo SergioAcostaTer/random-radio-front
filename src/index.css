@@ -1,13 +1,9 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 
 .pop{
   font-family: 'Poppins', sans-serif;
 }
 
-#root{
+#root, html, body{
   height: 100vh;
   width: 100vw;
 }

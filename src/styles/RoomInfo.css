@@ -9,7 +9,6 @@
 }
 
 .infoContainer {
-  position: relative;
   display: flex;
   width: 100%;
   flex-direction: column;
@@ -40,6 +39,9 @@
   justify-content: center;
   font-weight: 600;
   font-family: "Poppins", sans-serif;
+}
+.infoContainer .titlesCont .text p {
+  margin: 0;
 }
 .infoContainer .titlesCont .text .title {
   font-size: 0.8rem;
@@ -109,6 +111,7 @@
   font-weight: 400;
   font-family: "Poppins", sans-serif;
   padding-bottom: 2px;
+  margin: 0;
 }
 .custom-toast .info-cont .song-details {
   display: flex;
@@ -134,8 +137,10 @@
   font-size: 0.8rem;
   color: #000000;
   display: inline-block;
+  margin: 0;
 }
 .custom-toast .info-cont .song-details .text .song-author {
+  margin: 0;
   font-size: 0.7rem;
   color: #000000;
   display: inline-block;
@@ -186,5 +191,12 @@
 @media screen and (max-width: 1000px) {
   .infoContainerMobile {
     display: block;
+  }
+  .infoContainerMobile img {
+    width: 100%;
+    height: 100%;
+  }
+  .infoContainer {
+    display: none;
   }
 }/*# sourceMappingURL=RoomInfo.css.map */

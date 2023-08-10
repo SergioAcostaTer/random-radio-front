@@ -6,8 +6,8 @@ export default function Message({ user = "noname", message = "Hello World!", col
     return (
         <>
             <li className="message">
-                <h3 style={{ color: color }} >{user}:</h3>
-                <p>{message}</p>
+
+                <p> <span style={{ color: color }} >{user}:</span> {message}</p>
             </li>
         </>)
 }

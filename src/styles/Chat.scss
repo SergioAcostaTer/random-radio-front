@@ -1,4 +1,4 @@
-.chat__cont-mobile{
+.chat__cont-mobile {
     display: none;
 }
 
@@ -12,7 +12,6 @@
     justify-content: space-between;
     max-height: 100vh;
     transition: all 0.1s ease-in-out;
-    
 
 
 
@@ -21,7 +20,7 @@
         z-index: 100;
         border: 1px solid #dedede;
         padding: 10px 20px;
-        height: 60px;
+        height: 40px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -40,6 +39,9 @@
         display: flex;
         flex-direction: column;
         overflow: scroll;
+        margin: 0;
+        // overflow-x: hidden;
+
 
         .message {
             display: flex;
@@ -48,6 +50,19 @@
             padding: 2px;
             cursor: pointer;
             border-radius: 6px;
+            align-items: center;
+
+            p {
+                margin: 0;
+                display: inline;
+
+
+                span {
+                    font-size: 1.1rem;
+                    font-weight: 600;
+                }
+
+            }
         }
 
         .message:hover {
@@ -55,13 +70,14 @@
         }
     }
 
-    .form{
+    .form {
         display: flex;
         flex-direction: column;
         align-items: center;
         gap: 5px;
-        .input-tx{
-            width: 96%;
+
+        .input-tx {
+            width: 90%;
             height: 40px;
             border: 2px solid #dedede;
             border-radius: 6px;
@@ -72,21 +88,25 @@
             background-color: white;
             transition: all 0.1s ease-in-out;
         }
-        .input-tx:hover{
+
+        .input-tx:hover {
             border: 2px solid #b1b1b1;
 
         }
-        .input-tx:focus{
+
+        .input-tx:focus {
             border: 2px solid #858585;
             outline: 1px solid #858585;
         }
-        .button_container{
+
+        .button_container {
             width: 100%;
             display: flex;
-            justify-content: flex-end;
+            justify-content: center;
             padding: 5px;
-            button{
-                width: 100%;
+
+            button {
+                width: 96%;
                 height: 40px;
                 border: none;
                 border-radius: 6px;
@@ -102,7 +122,7 @@
 }
 
 @media screen and (max-width: 1200px) {
-    .chat__cont{
+    .chat__cont {
         width: 100%;
         max-width: 280px;
     }
@@ -110,12 +130,13 @@
 
 
 @media screen and (max-width: 1000px) {
-    .chat__cont{
+    .chat__cont {
         width: 100%;
         max-width: none;
         display: none;
     }
-    .chat__cont-mobile{
+
+    .chat__cont-mobile {
         display: flex;
         flex-direction: column;
         position: absolute;
@@ -135,13 +156,14 @@
             height: 120px;
             display: flex;
             justify-content: space-around;
-    
+
             h1 {
                 font-size: 1.2rem;
                 font-weight: 600;
                 color: #000000;
             }
-            p{
+
+            p {
                 color: #000000;
             }
         }
@@ -153,7 +175,7 @@
             display: flex;
             flex-direction: column;
             overflow: scroll;
-    
+
             .message {
                 display: flex;
                 gap: 5px;
@@ -162,18 +184,19 @@
                 cursor: pointer;
                 border-radius: 6px;
             }
-    
+
             .message:hover {
                 background-color: #f1f1f1;
             }
         }
-    
-        .form{
+
+        .form {
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 5px;
-            .input-tx{
+
+            .input-tx {
                 width: 96%;
                 height: 40px;
                 border: 2px solid #dedede;
@@ -185,20 +208,24 @@
                 background-color: white;
                 transition: all 0.1s ease-in-out;
             }
-            .input-tx:hover{
+
+            .input-tx:hover {
                 border: 2px solid #b1b1b1;
-    
+
             }
-            .input-tx:focus{
+
+            .input-tx:focus {
                 border: 2px solid #858585;
                 outline: 1px solid #858585;
             }
-            .button_container{
+
+            .button_container {
                 width: 100%;
                 display: flex;
                 justify-content: flex-end;
                 padding: 5px;
-                button{
+
+                button {
                     width: 100%;
                     height: 40px;
                     border: none;
@@ -215,6 +242,6 @@
     }
 }
 
-body{
+body {
     overflow: hidden;
 }
