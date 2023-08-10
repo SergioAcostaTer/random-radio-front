@@ -74,7 +74,7 @@ function Room() {
 
                 </div>
                 <>
-                    {sockett ? <Chat deleteChat={deleteChat} socket={sockett} /> : null}
+                    {sockett ? <Chat /> : null}
                 </>
             </div>
         </>

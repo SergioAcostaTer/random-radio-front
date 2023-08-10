@@ -8,7 +8,7 @@ import generateFunnyName from "../services/nameGenerator";
 import randomColor from "../services/randomColor";
 
 
-const Chat = ({ deleteChat }) => {
+const Chat = () => {
   const [user, setUser] = useState({}); // [user, setUser]
   const [messages, setMessages] = useState([]);
   const [message, setMessage] = useState("");
@@ -61,12 +61,6 @@ const Chat = ({ deleteChat }) => {
 
     setMessage("");
   };
-
-  useEffect(() => {
-    if (deleteChat) {
-      setMessages([]);
-    }
-  }, [deleteChat]);
 
   useEffect(() => {
     console.log(users);
