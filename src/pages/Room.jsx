@@ -49,9 +49,12 @@ function Room() {
             <div className="full-container" style={{
                 backgroundColor: colors?.[1]?.hex,
             }}>
+                {/* <div style={{ padding: 7 }}> */}
+
                 <div className="roomInfo__cont">
                     <RoomsInfo />
                 </div>
+                {/* </div> */}
                 <div className="main__cont"
                     style={{
                         backgroundColor: colors?.[1]?.hex
