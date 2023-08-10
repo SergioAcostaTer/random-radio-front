@@ -29,7 +29,7 @@ function RoomInfo({ roomInfo, refreshDeleteChat }) {
         const handleSongDetails = (song) => {
             setData(song);
             setCurrentTime(song.currentTime);
-            
+
             //10% of probability of changing the song
             if (Math.random() < 1 && trueAfter5seconds && window.location.pathname !== `/${roomInfo.roomName}`) {
                 const toastId = toast.info(
@@ -40,12 +40,12 @@ function RoomInfo({ roomInfo, refreshDeleteChat }) {
                         }}
                     >
                         <div className="info-cont">
-                            <p style={{color: getContrastColor(song.colors[0].hex)[0]}} className="playlist">Wanna change of room?</p>
+                            <p style={{ color: getContrastColor(song.colors[0].hex)[0] }} className="playlist">Wanna change of room?</p>
                             <div className="song-details">
                                 <img src={song.cover} alt={song.name} />
                                 <div className="text">
-                                    <p style={{color: getContrastColor(song.colors[0].hex)[0]}}  className="song-title">{song.name}</p>
-                                    <p style={{color: getContrastColor(song.colors[0].hex)[0]}} className="song-author">{song.artists[0]}</p>
+                                    <p style={{ color: getContrastColor(song.colors[0].hex)[0] }} className="song-title">{song.name}</p>
+                                    <p style={{ color: getContrastColor(song.colors[0].hex)[0] }} className="song-author">{song.artists[0]}</p>
                                 </div>
                                 <div className="buttons">
                                     <button className="toast-button" onClick={() => {
@@ -68,7 +68,7 @@ function RoomInfo({ roomInfo, refreshDeleteChat }) {
                     </div>,
                     {
                         position: "bottom-left",
-                        autoClose: 5500,
+                        autoClose: false,
                         closeButton: false,
                         //no icon
                         icon: false,
@@ -92,10 +92,21 @@ function RoomInfo({ roomInfo, refreshDeleteChat }) {
                     }
                 );
 
-
-
-
+                let remainingTime = 5500; // The toast should stay for 5500ms
+                const intervalId = setInterval(() => {
+                    remainingTime -= 1000;
+                    if (remainingTime <= 0) {
+                        clearInterval(intervalId);
+                        toast.dismiss(toastId); // Dismiss the toast
+                    }
+                }, 1000);
             }
+
+
+
+
+
+
 
         };
 
