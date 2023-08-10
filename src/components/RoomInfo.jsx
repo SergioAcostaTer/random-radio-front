@@ -29,10 +29,9 @@ function RoomInfo({ roomInfo, refreshDeleteChat }) {
         const handleSongDetails = (song) => {
             setData(song);
             setCurrentTime(song.currentTime);
-            console.log(song.currentTime);
-
+            
             //10% of probability of changing the song
-            if (Math.random() < 1 && trueAfter5seconds) {
+            if (Math.random() < 1 && trueAfter5seconds && window.location.pathname !== `/${roomInfo.roomName}`) {
                 const toastId = toast.info(
                     <div
                         className={`custom-toast`} // Add the custom CSS class
@@ -68,7 +67,7 @@ function RoomInfo({ roomInfo, refreshDeleteChat }) {
 
                     </div>,
                     {
-                        position: "top-right",
+                        position: "bottom-left",
                         autoClose: 5500,
                         closeButton: false,
                         //no icon
@@ -88,7 +87,8 @@ function RoomInfo({ roomInfo, refreshDeleteChat }) {
                         progressStyle: {
                             // backgroundColor: song.colors[0].hex,
                             // backgroundColor: "transparent",
-                        }
+                        },
+                        draggablePercent: 40,
                     }
                 );
 

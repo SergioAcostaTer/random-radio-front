@@ -35,7 +35,9 @@ const MusicPlayer = ({ cover, title, artists, colors, currentTime, duration, loa
             boxShadow: colors ? `0 0 200px ${colors[0].hex}` : null,
         }}>
             <div className="musicPlayer__cover noselect">
-                <img className='noselect' src={cover} alt={title} />
+                <div className='img load'>
+                    <img className='noselect' src={cover} alt={title} />
+                </div>
                 <div className='wave-ani'>
                     <div className={loading ? "loading-off" : "loading"}>
                         <span></span>

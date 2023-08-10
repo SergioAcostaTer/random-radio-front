@@ -22,10 +22,18 @@
   height: 100%;
   position: relative;
 }
-.musicPlayer__cont .musicPlayer__cover img {
+.musicPlayer__cont .musicPlayer__cover .img {
   height: 100%;
   width: 100%;
   border-radius: 21px 0 0 21px;
+  aspect-ratio: 1/1;
+}
+.musicPlayer__cont .musicPlayer__cover .img img {
+  height: 100%;
+  width: 100%;
+  border-radius: 21px 0 0 21px;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 .musicPlayer__cont .musicPlayer__cover .wave-ani {
   position: absolute;

@@ -118,6 +118,10 @@
   gap: 5px;
   flex-direction: row-reverse;
 }
+.custom-toast .info-cont .song-details .buttons .toast-button:hover, .custom-toast .info-cont .song-details .buttons .toast-button-no:hover {
+  border: 1px solid #fff;
+  outline: none;
+}
 .custom-toast .info-cont .song-details .buttons .toast-button {
   height: 40px;
   width: 40px;

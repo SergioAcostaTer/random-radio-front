@@ -141,6 +141,13 @@
                 display: flex;
                 gap: 5px;   
                 flex-direction: row-reverse;
+
+
+                .toast-button:hover, .toast-button-no:hover{
+                    border: 1px solid #fff;
+                    outline: none;
+
+                }
         
 
 
