@@ -64,6 +64,14 @@
   max-width: 100%;
 }
 
+@keyframes progress {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
 .custom-toast {
   border-radius: 5px;
   display: flex;
@@ -71,6 +79,25 @@
   cursor: grab;
   background-color: #000000;
   padding: 10px 15px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  padding-bottom: 20px;
+}
+.custom-toast .progress-bar {
+  width: 100%;
+  height: 5px;
+  background-color: #e0e0e0;
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
+  position: relative;
+}
+.custom-toast .progress-bar .progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  max-width: 100%;
+  animation: progress 6.2s linear;
+  background-color: #40C057;
 }
 .custom-toast .info-cont {
   width: 100%;
@@ -118,7 +145,8 @@
   gap: 5px;
   flex-direction: row-reverse;
 }
-.custom-toast .info-cont .song-details .buttons .toast-button:hover, .custom-toast .info-cont .song-details .buttons .toast-button-no:hover {
+.custom-toast .info-cont .song-details .buttons .toast-button:hover,
+.custom-toast .info-cont .song-details .buttons .toast-button-no:hover {
   border: 1px solid #fff;
   outline: none;
 }

@@ -25,10 +25,15 @@ function RoomInfo({ roomInfo, refreshDeleteChat }) {
             trueAfter5seconds = true
         }, 5000);
 
+        // toast.configure({
+        //     pauseOnFocusLoss: false
+        //   });
 
         const handleSongDetails = (song) => {
             setData(song);
             setCurrentTime(song.currentTime);
+
+
 
             //10% of probability of changing the song
             if (Math.random() < 1 && trueAfter5seconds && window.location.pathname !== `/${roomInfo.roomName}`) {
@@ -63,14 +68,17 @@ function RoomInfo({ roomInfo, refreshDeleteChat }) {
                                         </svg></button>
                                 </div>
                             </div>
+                            {/* <div className="progress-bar">
+                                <div className="progress"></div>
+                            </div> */}
+
                         </div>
 
                     </div>,
                     {
                         position: "bottom-left",
-                        autoClose: false,
+                        autoClose: 5000,
                         closeButton: false,
-                        //no icon
                         icon: false,
                         style: {
                             backgroundColor: "transparent",
@@ -85,21 +93,27 @@ function RoomInfo({ roomInfo, refreshDeleteChat }) {
                             fontSize: "0",
                         },
                         progressStyle: {
-                            // backgroundColor: song.colors[0].hex,
+                            backgroundColor: "#40C057",
                             // backgroundColor: "transparent",
+                            bottom: 13,
+                            width: "90%",
+                            left: 0,
+                            right: 0,
+                            margin: "0 auto",
                         },
                         draggablePercent: 40,
+                        pauseOnFocusLoss: false,
                     }
                 );
 
-                let remainingTime = 5500; // The toast should stay for 5500ms
-                const intervalId = setInterval(() => {
-                    remainingTime -= 1000;
-                    if (remainingTime <= 0) {
-                        clearInterval(intervalId);
-                        toast.dismiss(toastId); // Dismiss the toast
-                    }
-                }, 1000);
+                // let remainingTime = 6000; // The toast should stay for 5500ms
+                // const intervalId = setInterval(() => {
+                //     remainingTime -= 1000;
+                //     if (remainingTime <= 0) {
+                //         clearInterval(intervalId);
+                //         toast.dismiss(toastId); // Dismiss the toast
+                //     }
+                // }, 1000);
             }
 
 
