@@ -68,8 +68,8 @@ function RoomInfo({ roomInfo, refreshDeleteChat }) {
 
                     </div>,
                     {
-                        position: "bottom-center",
-                        autoClose: 2500,
+                        position: "top-right",
+                        autoClose: 5500,
                         closeButton: false,
                         //no icon
                         icon: false,
