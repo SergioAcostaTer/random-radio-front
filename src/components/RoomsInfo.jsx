@@ -69,13 +69,13 @@ const roomsInfo = [
 
 
 
-const RoomsInfo = ({refreshDeleteChat}) => {
+const RoomsInfo = () => {
     return (
         <>
 
         {
             roomsInfo.map((roomInfo) => (
-                <RoomInfo key={roomInfo.roomName} roomInfo={roomInfo} refreshDeleteChat={refreshDeleteChat}/>
+                <RoomInfo key={roomInfo.roomName} roomInfo={roomInfo}/>
             ))
             
         }

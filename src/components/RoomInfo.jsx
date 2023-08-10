@@ -1,23 +1,46 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import io from "socket.io-client";
-import getContrastColor from "../services/getContrastColor";
-import "../styles/RoomInfo.css";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import getContrastColor from "../services/getContrastColor";
+import "../styles/RoomInfo.css";
 
-function RoomInfo({ roomInfo, refreshDeleteChat }) {
+
+function RoomInfo({ roomInfo }) {
+    const { title, roomName } = roomInfo;
     const [data, setData] = useState(null);
     const [progress, setProgress] = useState(0); // Progress state
     const [currentTime, setCurrentTime] = useState(0); // Current time state
     const navigate = useNavigate();
+    const [pageVisible, setPageVisible] = useState(true);
 
-
-
+    function clearAllToasts() {
+        const toasts = toast.getCurrentToastIds();
+        toasts.forEach((id) => toast.dismiss(id));
+    }
 
     useEffect(() => {
-        // const socket = io("http://localhost:3000/" + roomInfo.roomName);
-        const socket = io("https://random-radio-back.onrender.com/" + roomInfo.roomName);
+        const handleVisibilityChange = () => {
+            setPageVisible(!document.hidden);
+
+            if (!document.hidden) {
+                clearAllToasts();
+            }
+        };
+
+        document.addEventListener("visibilitychange", handleVisibilityChange);
+
+        return () => {
+            document.removeEventListener("visibilitychange", handleVisibilityChange);
+        };
+    }, []);
+
+    const socketURL = "https://random-radio-back.onrender.com/" + roomName;
+    // const socketURL = "http://localhost:3000/" + roomName;
+
+    useEffect(() => {
+        const socket = io(socketURL);
 
         let trueAfter5seconds = false
 
@@ -25,18 +48,12 @@ function RoomInfo({ roomInfo, refreshDeleteChat }) {
             trueAfter5seconds = true
         }, 5000);
 
-        // toast.configure({
-        //     pauseOnFocusLoss: false
-        //   });
-
         const handleSongDetails = (song) => {
             setData(song);
             setCurrentTime(song.currentTime);
 
-
-
             //10% of probability of changing the song
-            if (Math.random() < 1 && trueAfter5seconds && window.location.pathname !== `/${roomInfo.roomName}`) {
+            if (trueAfter5seconds && window.location.pathname !== `/${roomName}` && pageVisible) {
                 const toastId = toast.info(
                     <div
                         className={`custom-toast`} // Add the custom CSS class
@@ -54,8 +71,8 @@ function RoomInfo({ roomInfo, refreshDeleteChat }) {
                                 </div>
                                 <div className="buttons">
                                     <button className="toast-button" onClick={() => {
-                                        navigate(`/${roomInfo.roomName}`)
-                                        toast.dismiss(toastId)
+                                        navigate(`/${roomName}`)
+                                        toast.dismiss()
                                     }}
                                     ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
                                             <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z" />
@@ -68,12 +85,7 @@ function RoomInfo({ roomInfo, refreshDeleteChat }) {
                                         </svg></button>
                                 </div>
                             </div>
-                            {/* <div className="progress-bar">
-                                <div className="progress"></div>
-                            </div> */}
-
                         </div>
-
                     </div>,
                     {
                         position: "bottom-left",
@@ -94,7 +106,6 @@ function RoomInfo({ roomInfo, refreshDeleteChat }) {
                         },
                         progressStyle: {
                             backgroundColor: "#40C057",
-                            // backgroundColor: "transparent",
                             bottom: 13,
                             width: "90%",
                             left: 0,
@@ -103,68 +114,53 @@ function RoomInfo({ roomInfo, refreshDeleteChat }) {
                         },
                         draggablePercent: 40,
                         pauseOnFocusLoss: false,
+                        pauseOnHover: true,
                     }
                 );
 
-                // let remainingTime = 6000; // The toast should stay for 5500ms
-                // const intervalId = setInterval(() => {
-                //     remainingTime -= 1000;
-                //     if (remainingTime <= 0) {
-                //         clearInterval(intervalId);
-                //         toast.dismiss(toastId); // Dismiss the toast
-                //     }
-                // }, 1000);
             }
-
-
-
-
-
-
-
         };
 
         socket.on("songDetails", handleSongDetails);
 
         return () => {
-            socket.off("songDetails", handleSongDetails);
+            socket.disconnect();
         };
 
+    }, [socketURL]);
 
-    }, [roomInfo]);
 
-    // Calculate progress when data changes
+    const songDuration = data?.duration || 1; // To avoid division by zero
 
-    // Update progress every second
     useEffect(() => {
-        const interval = setInterval(() => {
-            setProgress((currentTime / data?.duration) * 100);
-            setCurrentTime(currentTime + 0.05);
-        }, 50);
+        if (data) {
+            const interval = setInterval(() => {
+                setProgress((currentTime / songDuration) * 100);
+                setCurrentTime((prevTime) => prevTime + 0.05);
+            }, (songDuration / 100) * 50); // Update every 0.5% of song duration
 
-        return () => {
-            clearInterval(interval);
-        };
-    }, [data, currentTime]);
+            return () => {
+                clearInterval(interval);
+            };
+        }
+    }, [data, currentTime, songDuration]);
 
-
+    const handleRoomNavigation = useCallback(() => {
+        if (window.location.pathname !== `/${roomName}`) {
+            navigate(`/${roomName}`);
+        }
+    }, [roomName, navigate]);
 
     return (
         <>
-            {/* toast */}
             {data ? (
-                <div onClick={() => {
-                    refreshDeleteChat();
-                    if (window.location.pathname !== `/${roomInfo?.roomName}`) {
-                        navigate(`/${roomInfo?.roomName}`);
-                    }
-                }} className="infoContainer" style={{ backgroundColor: data?.colors[0]?.hex }}>
+                <div onClick={handleRoomNavigation} className="infoContainer" style={{ backgroundColor: data?.colors[0]?.hex }}>
                     <h1 className="roomTitle"
                         style={{
                             color: getContrastColor(data?.colors[0]?.hex)[0]
                         }}
 
-                    >{roomInfo?.title}</h1>
+                    >{title}</h1>
 
                     <div className="titlesCont noselect">
                         <img className="noselect" src={data?.cover} alt={data?.name} />
@@ -184,23 +180,9 @@ function RoomInfo({ roomInfo, refreshDeleteChat }) {
                 <p>No song currently playing.</p>
             )}
 
-            <div className="infoContainerMobile" onClick={() => {
-                refreshDeleteChat();
-                if (window.location.pathname !== `/${roomInfo?.roomName}`) {
-                    navigate(`/${roomInfo?.roomName}`);
-                }
-            }}>
+            <div className="infoContainerMobile" onClick={handleRoomNavigation}>
                 <img className="noselect" src={data?.cover} alt={data?.name} />
             </div>
-
-
-
-
-            {/* {data && (
-                <div className="progress-bar">
-                    <div className="progress" style={{ width: `${progress}%` }}></div>
-                </div>
-            )} */}
         </>
     );
 }

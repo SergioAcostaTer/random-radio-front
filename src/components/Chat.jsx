@@ -35,7 +35,6 @@ const Chat = () => {
     });
 
     socket.on("newMessage", (data) => {
-      console.log(data);
       setMessages((messages) => [...messages, data]);
       list.current.scrollTop = list.current.scrollHeight;
     });
@@ -61,10 +60,6 @@ const Chat = () => {
 
     setMessage("");
   };
-
-  useEffect(() => {
-    console.log(users);
-  }, [users]);
 
   return (
     <>

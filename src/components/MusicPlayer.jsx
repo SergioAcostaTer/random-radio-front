@@ -75,7 +75,6 @@ const MusicPlayer = ({ cover, title, artists, colors, currentTime, duration, loa
                         onChange={(e) => {
                             const newVolume = e.target.value;
                             setVolumen(newVolume);
-                            console.log(newVolume);
                         }} />
                     <p className='mas'>+</p>
                 </div>
