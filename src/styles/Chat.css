@@ -16,7 +16,7 @@
 .chat__cont .chat__header {
   z-index: 100;
   border: 1px solid #dedede;
-  padding: 10px 20px;
+  padding: 20px;
   height: 40px;
   display: flex;
   align-items: center;
@@ -106,10 +106,12 @@
     max-width: 280px;
   }
 }
+* {
+  box-sizing: border-box;
+}
+
 @media screen and (max-width: 1000px) {
   .chat__cont {
-    width: 100%;
-    max-width: none;
     display: none;
   }
   .chat__cont-mobile {
@@ -119,9 +121,10 @@
     height: 100vh;
     background-color: #ffffff;
     z-index: 2000;
-    bottom: calc(-100vh + 120px);
+    bottom: -100vh;
     width: 100%;
     transition: 0.2s;
+    box-sizing: border-box;
   }
   .chat__cont-mobile .chat__header {
     z-index: 100;
@@ -131,6 +134,7 @@
     height: 120px;
     display: flex;
     justify-content: space-around;
+    box-sizing: border-box;
   }
   .chat__cont-mobile .chat__header h1 {
     font-size: 1.2rem;
@@ -147,6 +151,7 @@
     display: flex;
     flex-direction: column;
     overflow: scroll;
+    box-sizing: border-box;
   }
   .chat__cont-mobile .messages__cont .message {
     display: flex;
@@ -155,6 +160,10 @@
     padding: 2px;
     cursor: pointer;
     border-radius: 6px;
+    box-sizing: border-box;
+  }
+  .chat__cont-mobile .messages__cont .message p {
+    margin: 0;
   }
   .chat__cont-mobile .messages__cont .message:hover {
     background-color: #f1f1f1;
@@ -164,6 +173,7 @@
     flex-direction: column;
     align-items: center;
     gap: 5px;
+    padding-bottom: 60px;
   }
   .chat__cont-mobile .form .input-tx {
     width: 96%;

@@ -117,6 +117,16 @@
     margin-bottom: -165px;
   }
 }
+@media screen and (max-width: 360px) {
+  .musicPlayer__cont {
+    display: flex;
+    height: 150px;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 500px;
+    margin-bottom: -165px;
+  }
+}
 .wrapper {
   position: relative;
   height: 1rem;

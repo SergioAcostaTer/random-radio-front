@@ -19,7 +19,7 @@
     .chat__header {
         z-index: 100;
         border: 1px solid #dedede;
-        padding: 10px 20px;
+        padding: 20px;
         height: 40px;
         display: flex;
         align-items: center;
@@ -55,6 +55,7 @@
             p {
                 margin: 0;
                 display: inline;
+
 
 
                 span {
@@ -128,11 +129,14 @@
     }
 }
 
+*{
+    box-sizing: border-box;
+
+}
+
 
 @media screen and (max-width: 1000px) {
     .chat__cont {
-        width: 100%;
-        max-width: none;
         display: none;
     }
 
@@ -143,9 +147,10 @@
         height: 100vh;
         background-color: #ffffff;
         z-index: 2000;
-        bottom: calc(-100vh + 120px);
+        bottom: -100vh;
         width: 100%;
         transition: .2s;
+        box-sizing: border-box;
 
 
         .chat__header {
@@ -156,6 +161,7 @@
             height: 120px;
             display: flex;
             justify-content: space-around;
+            box-sizing: border-box;
 
             h1 {
                 font-size: 1.2rem;
@@ -175,6 +181,8 @@
             display: flex;
             flex-direction: column;
             overflow: scroll;
+            box-sizing: border-box;
+
 
             .message {
                 display: flex;
@@ -183,6 +191,12 @@
                 padding: 2px;
                 cursor: pointer;
                 border-radius: 6px;
+                box-sizing: border-box;
+                p{
+                margin: 0;
+
+                }
+
             }
 
             .message:hover {
@@ -195,6 +209,7 @@
             flex-direction: column;
             align-items: center;
             gap: 5px;
+            padding-bottom: 60px;
 
             .input-tx {
                 width: 96%;

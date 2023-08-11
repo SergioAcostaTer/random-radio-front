@@ -24,7 +24,7 @@
 @media screen and (max-width: 1000px) {
   .user__counter {
     left: 10px;
-    top: 520px;
+    top: 485px;
   }
 }
 .full-container {
@@ -92,6 +92,12 @@
 @media screen and (max-width: 600px) {
   .full-container .roomInfo__cont {
     grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    width: 100%;
+  }
+}
+@media screen and (max-width: 360px) {
+  .full-container .roomInfo__cont {
+    grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
     width: 100%;
   }
 }
@@ -273,5 +279,36 @@
     transform: translateY(-1000px) rotate(720deg);
     opacity: 0;
     border-radius: 50%;
+  }
+}
+.none {
+  display: none !important;
+}
+
+.page_loader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #ffffff;
+  z-index: 2000000;
+  transition: 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.page_loader img {
+  width: 200px;
+  height: 200px;
+}
+
+@media screen and (max-width: 1000px) {
+  .full-container {
+    height: 100vh;
+  }
+  .page_loader img {
+    width: 100px;
+    height: 100px;
   }
 }/*# sourceMappingURL=layout.css.map */

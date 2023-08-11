@@ -11,9 +11,14 @@ import Cookies from "../components/Cookies";
 
 import "../styles/layout.css";
 import Header from "../components/Header";
+import PageLoader from "../components/PageLoader";
+import useLoading from "../hooks/useLoading";
+
 
 function Room() {
     const { room } = useParams();
+    const [loading, showLoader, setLoading] = useLoading();
+
     const socketURL = "https://random-radio-back.onrender.com/" + room;
     // const socketURL = "http://localhost:3000/" + room;
 
@@ -45,11 +50,18 @@ function Room() {
         };
     }, [room, socketURL]);
 
-
     return (
         <>
             <Cookies />
             <Header backColor={colors?.[0]?.hex} />
+            <PageLoader
+                styles={{
+                    backgroundColor: colors?.[1]?.hex,
+                    opacity: loading ? 1 : 0,
+                    transition: "all 0.3s",
+                }}
+                className={showLoader ? "" : "none"}
+            />
             <div className="full-container" style={{
                 backgroundColor: colors?.[1]?.hex,
             }}>
@@ -83,7 +95,10 @@ function Room() {
                         volume={volume / 100}
                         width={0}
                         height={0}
-                        onStart={() => setPlayerLoaded(true)}
+                        onStart={() => {
+                            setPlayerLoaded(true)
+                            setLoading(false);
+                        }}
                         style={{ display: "none" }}
                     />
 

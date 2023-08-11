@@ -9,8 +9,6 @@ import useVisible from "../hooks/useVisible";
 import useContrast from "../hooks/useContrast";
 
 
-
-
 function RoomInfo({ roomInfo }) {
     const { title, roomName } = roomInfo;
     const [data, setData] = useState(null);
@@ -53,7 +51,7 @@ function RoomInfo({ roomInfo }) {
 
     return (
         <>
-                <div onClick={handleRoomNavigation} className="infoContainer" style={{ backgroundColor: data?.colors[0]?.hex }}>
+                <div onClick={handleRoomNavigation} className={` ${data ? "" : "load"} infoContainer`} style={{ backgroundColor: data?.colors[0]?.hex, }}>
                     <h1 className="roomTitle"
                         style={{
                             color: contrast[0]
