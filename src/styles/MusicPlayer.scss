@@ -21,6 +21,7 @@
     z-index: 1200;
     animation: boxshadowGlow 1.5s infinite;
     transition: all 0.1s ease-in-out;
+    margin-top: -75px;
 
     .musicPlayer__cover {
         height: 100%;
@@ -134,7 +135,7 @@
         border-radius: 20px;
         width: 90%;
         max-width: 500px;
-        margin-bottom: -60px;
+        margin-bottom: -165px;
     }
 }
 

@@ -2,6 +2,7 @@
 .infoContainerMobile {
   display: none;
   cursor: pointer;
+  aspect-ratio: 1/1;
 }
 .infoContainerMobile img {
   border-radius: 7px;
@@ -191,10 +192,16 @@
 @media screen and (max-width: 1000px) {
   .infoContainerMobile {
     display: block;
-    aspect-ratio: 1;
   }
-  .infoContainerMobile img {
+  .infoContainerMobile div {
     width: 100%;
+    height: 100%;
+  }
+  .infoContainerMobile div img {
+    width: 100%;
+    height: 100%;
+    border-radius: 7px;
+    filter: brightness(0.8);
   }
   .infoContainer {
     display: none;

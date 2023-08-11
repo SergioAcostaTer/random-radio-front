@@ -47,7 +47,6 @@ function RoomInfo({ roomInfo }) {
             setData(song);
             setCurrentTime(song.currentTime);
 
-            //10% of probability of changing the song
             if (trueAfter5seconds && window.location.pathname !== `/${roomName}` && pageVisible) {
                 const toastId = toast.info(
                     <div
@@ -176,7 +175,9 @@ function RoomInfo({ roomInfo }) {
             )}
 
             <div className="infoContainerMobile" onClick={handleRoomNavigation}>
-                <img className="noselect" src={data?.cover} alt={data?.name} />
+                <div>
+                    <img className="noselect" src={data?.cover} alt={data?.name} />
+                </div>
             </div>
         </>
     );

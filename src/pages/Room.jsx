@@ -10,6 +10,7 @@ import Background from "../components/Background";
 import Cookies from "../components/Cookies";
 
 import "../styles/layout.css";
+import Header from "../components/Header";
 
 function Room() {
     const { room } = useParams();
@@ -48,6 +49,7 @@ function Room() {
     return (
         <>
             <Cookies />
+            <Header backColor={colors?.[0]?.hex} />
             <div className="full-container" style={{
                 backgroundColor: colors?.[1]?.hex,
             }}>
