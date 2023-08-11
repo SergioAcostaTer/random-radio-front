@@ -49,6 +49,8 @@ const Chat = () => {
   const sendMessage = (e) => {
     e.preventDefault();
 
+    e.target.blur();
+
     if (!message) return;
 
     socket.emit("newMessage", {
