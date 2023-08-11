@@ -7,12 +7,11 @@ import Chat from "../components/Chat";
 import RoomsInfo from "../components/RoomsInfo";
 import MusicPlayer from "../components/MusicPlayer";
 import Background from "../components/Background";
-import Cookies from "../components/Cookies";
-
-import "../styles/layout.css";
 import Header from "../components/Header";
 import PageLoader from "../components/PageLoader";
 import useLoading from "../hooks/useLoading";
+
+import "../styles/layout.css";
 
 
 function Room() {
@@ -52,7 +51,6 @@ function Room() {
 
     return (
         <>
-            <Cookies />
             <Header backColor={colors?.[0]?.hex} />
             <PageLoader
                 styles={{
@@ -95,7 +93,7 @@ function Room() {
                         volume={volume / 100}
                         width={0}
                         height={0}
-                        onStart={() => {
+                        onReady={() => {
                             setPlayerLoaded(true)
                             setLoading(false);
                         }}

@@ -1,26 +1,23 @@
-import { useEffect } from "react"
+// import { useEffect } from "react"
 
 
-const Cookies = () => {
+// const Cookies = () => {
 
 
-  useEffect(() => {
-    //request sound permission
+//   useEffect(() => {
+//     //request sound permission
 
-    navigator.mediaDevices.getUserMedia({ audio: true })
+//     navigator.mediaDevices.getUserMedia({ audio: true })
 
-
-
-
-  }, []);
+//   }, []);
 
 
-  return (
-    <>
+//   return (
+//     <>
 
 
-    </>
-  )
-}
+//     </>
+//   )
+// }
 
-export default Cookies
+// export default Cookies
