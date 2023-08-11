@@ -154,6 +154,7 @@
     position: absolute;
     z-index: 1050;
     top: 0;
+    transition: .3s;
 }
 
 .circles {
@@ -166,6 +167,7 @@
     margin: 0;
     z-index: -100;
     padding: 0;
+    transition: .3s;
 }
 
 .circles li {
@@ -174,9 +176,10 @@
     list-style: none;
     width: 20px;
     height: 20px;
-    background: rgba(80, 80, 80, 0.351);
+    // background: rgba(80, 80, 80, 0.351);
     animation: animate 25s linear infinite;
     bottom: -150px;
+    transition: .3s;
 }
 
 .circles li:nth-child(1) {

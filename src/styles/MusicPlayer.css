@@ -18,6 +18,7 @@
   animation: boxshadowGlow 1.5s infinite;
   transition: all 0.1s ease-in-out;
   margin-top: -75px;
+  transition: 0.3s;
 }
 .musicPlayer__cont .musicPlayer__cover {
   height: 100%;

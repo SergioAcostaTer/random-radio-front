@@ -1,33 +1,14 @@
 import '../styles/MusicPlayer.css';
-import { useEffect, useRef, useState } from 'react';
-import getContrastColor from "../services/getContrastColor";
+import { useRef } from 'react';
+import useProgress from '../hooks/useProgress';
+import useContrast from "../hooks/useContrast"
 
 const MusicPlayer = ({ cover, title, artists, colors, currentTime, duration, loading, volume }) => {
-    const [progress, setProgress] = useState(0);
-    const [actualTime, setActualTime] = useState(0);
     const cardRef = useRef(null);
-    const [contrast, setContrast] = useState(""); // Contrast color
     const [volumen, setVolumen] = volume;
+    const contrast = useContrast({ color: colors?.[0]?.hex });
+    const progress = useProgress({ songDuration: duration, currentTime });
 
-    useEffect(() => {
-        setActualTime(currentTime);
-
-        const interval = setInterval(() => {
-            setActualTime(prevTime => prevTime + 0.05); // Increment the actualTime
-        }, 50);
-
-        return () => {
-            clearInterval(interval);
-        };
-    }, [currentTime, duration]);
-
-    useEffect(() => {
-        setProgress((actualTime / duration) * 100); // Calculate the progress based on updated actualTime
-    }, [actualTime, duration]);
-
-    useEffect(() => {
-        setContrast(getContrastColor(colors ? colors[0].hex : "")); // Get the contrast color
-    }, [colors]);
 
     return (
         <div className="musicPlayer__cont" ref={cardRef} style={{
