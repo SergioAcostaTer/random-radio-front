@@ -16,13 +16,7 @@
   cursor: pointer;
   border-radius: 6px;
   border: 1px solid rgba(0, 0, 0, 0.65);
-}
-.infoContainer .roomTitle {
-  font-size: 1rem;
-  font-weight: 600;
-  margin-bottom: 7px;
-  margin-top: 7px;
-  text-align: center;
+  padding-top: 15px;
 }
 .infoContainer .titlesCont {
   display: flex;
@@ -30,8 +24,8 @@
   gap: 20px;
 }
 .infoContainer .titlesCont img {
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: 70px;
   border-radius: 5px;
 }
 .infoContainer .titlesCont .text {
@@ -50,6 +44,14 @@
 .infoContainer .titlesCont .text .author {
   font-size: 0.7rem;
   color: #9e9e9e;
+}
+.infoContainer .titlesCont .text .roomTitle {
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-bottom: 7px;
+  margin-top: 7px;
+  margin: 0;
+  margin-bottom: 7px;
 }
 .infoContainer .progressCont {
   width: 100%;

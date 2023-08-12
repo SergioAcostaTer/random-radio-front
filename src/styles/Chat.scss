@@ -19,8 +19,7 @@
     .chat__header {
         z-index: 100;
         border: 1px solid #dedede;
-        padding: 20px;
-        height: 40px;
+        height: 70px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -29,6 +28,7 @@
             font-size: 1.2rem;
             font-weight: 600;
             color: #000000;
+            margin: 0;
         }
     }
 

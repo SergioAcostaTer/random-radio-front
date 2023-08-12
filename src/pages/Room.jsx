@@ -13,7 +13,6 @@ import useLoading from "../hooks/useLoading";
 
 import "../styles/layout.css";
 
-
 function Room() {
     const { room } = useParams();
     const [loading, showLoader, setLoading] = useLoading();
@@ -52,14 +51,14 @@ function Room() {
     return (
         <>
             <Header backColor={colors?.[0]?.hex} />
-            <PageLoader
+            {/* <PageLoader
                 styles={{
                     backgroundColor: colors?.[1]?.hex,
                     opacity: loading ? 1 : 0,
                     transition: "all 0.3s",
                 }}
                 className={showLoader ? "" : "none"}
-            />
+            /> */}
             <div className="full-container" style={{
                 backgroundColor: colors?.[1]?.hex,
             }}>

@@ -8,7 +8,7 @@ import { ToastContainer } from 'react-toastify'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
     <BrowserRouter>
-    <ToastContainer limit={3} />
+    <ToastContainer/>
         <App />
     </BrowserRouter>
 )

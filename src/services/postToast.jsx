@@ -106,11 +106,15 @@ const postToast = ({ trueAfter5seconds, roomName, visible, song }) => {
     pauseOnHover: true,
   };
 
+  const random = Math.random();
+
+  console.log(random)
 
   if (
     trueAfter5seconds &&
     window.location.pathname !== `/${roomName}` &&
-    visible
+    visible &&
+    random > 0.43
   ) {
     toast.info(toastContent, toastOptions);
   }

@@ -27,7 +27,7 @@ function RoomInfo({ roomInfo }) {
 
         setTimeout(() => {
             trueAfter5seconds = true
-        }, 5000);
+        }, 10000);
 
         const handleSongDetails = (song) => {
             setData(song);
@@ -51,28 +51,29 @@ function RoomInfo({ roomInfo }) {
 
     return (
         <>
-                <div onClick={handleRoomNavigation} className={` ${data ? "" : "load"} infoContainer`} style={{ backgroundColor: data?.colors[0]?.hex, }}>
-                    <h1 className="roomTitle"
-                        style={{
-                            color: contrast[0]
-                        }}
+            <div onClick={handleRoomNavigation} className={` ${data ? "" : "load"} infoContainer`} style={{ backgroundColor: data?.colors[0]?.hex, }}>
 
-                    >{title}</h1>
 
-                    <div className="titlesCont noselect">
-                        <img className="noselect" src={data?.cover} alt={data?.name} />
-                        <div className="text">
-                            <p className="title noselect" style={{ color: contrast[0] }}>{data?.name}</p>
-                            <p className="author noselect" style={{ color: contrast[0] }}>{data?.artists ? data.artists[0] : null}</p>
-                        </div>
-                    </div>
+                <div className="titlesCont noselect">
+                    <img className="noselect" src={data?.cover} alt={data?.name} />
+                    <div className="text">
+                        <h1 className="roomTitle"
+                            style={{
+                                color: contrast[0]
+                            }}
 
-                    <div className="progressCont" style={{ backgroundColor: contrast[1] }}>
-                        <div className="progressBar" style={{ width: `${progress}%`, backgroundColor: contrast[0] }}>
-                        </div>
+                        >{title}</h1>
+                        <p className="title noselect" style={{ color: contrast[0] }}>{data?.name}</p>
+                        <p className="author noselect" style={{ color: contrast[0] }}>{data?.artists ? data.artists[0] : null}</p>
                     </div>
                 </div>
-           
+
+                <div className="progressCont" style={{ backgroundColor: contrast[1] }}>
+                    <div className="progressBar" style={{ width: `${progress}%`, backgroundColor: contrast[0] }}>
+                    </div>
+                </div>
+            </div>
+
 
             <div className="infoContainerMobile" onClick={handleRoomNavigation}>
                 <div className={!data ? "load" : ""}>
