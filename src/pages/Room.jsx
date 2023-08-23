@@ -12,12 +12,13 @@ import PageLoader from "../components/PageLoader";
 import useLoading from "../hooks/useLoading";
 
 import "../styles/layout.css";
+import Cookies from "../components/Cookies";
 
 function Room() {
     const { room } = useParams();
     const [loading, showLoader, setLoading] = useLoading();
 
-    const socketURL = "https://random-radio-back.onrender.com/" + room;
+    const socketURL = "https://radio-back.onrender.com/" + room;
     // const socketURL = "http://localhost:3000/" + room;
 
     const [playerLoaded, setPlayerLoaded] = useState(false);
@@ -50,6 +51,7 @@ function Room() {
 
     return (
         <>
+            <Cookies />
             <Header backColor={colors?.[0]?.hex} />
             {/* <PageLoader
                 styles={{

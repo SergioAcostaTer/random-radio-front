@@ -26,7 +26,7 @@
       });
 
       // const socket = socketIO("http://localhost:3000/")
-      const socket = socketIO("https://random-radio-back.onrender.com/")
+      const socket = socketIO("https://radio-back.onrender.com/")
 
       setSocket(socket);
 

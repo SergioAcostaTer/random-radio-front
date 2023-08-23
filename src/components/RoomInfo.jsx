@@ -17,7 +17,8 @@ function RoomInfo({ roomInfo }) {
     const progress = useProgress({ songDuration: data?.duration, currentTime: data?.currentTime });
     const contrast = useContrast({ color: data?.colors[0]?.hex });
 
-    const socketURL = "https://random-radio-back.onrender.com/" + roomName;
+    const socketURL = "https://radio-back.onrender.com/" + roomName;
+
     // const socketURL = "http://localhost:3000/" + roomName;
 
     useEffect(() => {
