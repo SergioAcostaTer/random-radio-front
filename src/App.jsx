@@ -4,9 +4,9 @@ import Room from "./pages/Room";
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<Navigate to="/room1" />} />
+      <Route path="/" element={<Navigate to="/room1" replace />} />
       <Route path="/:room" element={<Room />} />
-      <Route path="*" element={<Navigate to="/room1" />} />
+      <Route path="*" element={<Navigate to="/room1" replace />} />
     </Routes>
   );
 }
